@@ -9,9 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Inject version variable
+      - name: Inject environment secret
         run: |
-          sed -i "s/{{MSG_URL}}/${{secrets.msg_url}}/g" index.html
+          sed -i "s|{{MSG_URL}}|${{secrets.msg_url}}|g" index.html
 
       - name: Deploy
         uses: actions/upload-pages-artifact@v4
